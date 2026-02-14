@@ -137,28 +137,31 @@ ds002718-download/
 ## Expected Workflow
 
 ### Phase 1: Data Preparation
-1. **Load BIDS dataset** and extract EEG data
-2. **Apply preprocessing pipeline** to all subjects
-3. **Extract epochs** around face presentation events
-4. **Compute GFP** and identify peaks across time windows
+1. **Load BIDS-formatted dataset** and extract EEG data
+2. **Import channel locations** from BIDS electrodes.tsv files
+3. **Apply standardized preprocessing pipeline** across subjects
+4. **Epoch EEG data** around stimulus onset by condition (famous, unfamiliar, scrambled)
+5. **Segment epochs** into predefined temporal windows
+6. **Compute Global Field Power (GFP)** and identify GFP peaks within each window
 
-### Phase 2: Classical Analysis
-1. **Extract topographies** at GFP peaks
-2. **Apply k-means clustering** (k=4, k=6)
-3. **Compute microstate parameters** (duration, coverage, transitions)
-4. **Analyze task modulation** across stimulus conditions
+### Phase 2: Classical Microstate Analysis
+1. **Extract EEG scalp topographies** at GFP peaks
+2. **Perform k-means clustering** to derive canonical microstate maps (k = 4; exploratory k = 6)
+3. **Assign microstate labels** to continuous EEG data
+4. **Compute microstate temporal parameters** (mean duration, coverage, transition probabilities)
+5. **Compare microstate dynamics** across stimulus conditions and temporal windows
 
-### Phase 3: Deep Learning Development
-1. **Prepare training data** from classical analysis
-2. **Design CNN architecture** for topography classification
-3. **Implement training pipeline** with cross-validation
-4. **Optimize hyperparameters** for best performance
+### Phase 3: Deep Learning Model Development
+1. **Construct labeled datasets** using classical microstate assignments as training targets
+2. **Design a CNN architecture** to classify EEG scalp topographies into microstate classes
+3. **Implement subject-wise cross-validation** to prevent data leakage
+4. **Train models** using supervised learning and optimize hyperparameters via validation performance
 
 ### Phase 4: Evaluation and Comparison
-1. **Compare classification accuracy** between methods
-2. **Analyze agreement** between classical and CNN approaches
-3. **Evaluate temporal dynamics** consistency
-4. **Statistical testing** of performance differences
+1. **Evaluate CNN classification performance** using accuracy and confusion matrices
+2. **Quantify agreement** between classical and CNN-derived microstate labels
+3. **Compare temporal dynamics** (duration, coverage, transitions) between methods
+4. **Perform statistical testing** to assess performance differences and robustness
 
 ## Expected Outcomes
 
